@@ -1,8 +1,8 @@
-# DNS-AGN By KHALED AGN ( ENGLISH )
+# DNS-MAPTECH By MAPTECHGH ( ENGLISH )
 ```
-* DNS-AGN SLOWDNS SCRIPT
+* DNS-MAPTECH SLOWDNS SCRIPT
 ```
-![logo](https://raw.githubusercontent.com/khaledagn/DNS-AGN/main/AGN-DNS.png)
+![logo](https://raw.githubusercontent.com/AVEGAH/DNS-MAPTECH/main/AGN-DNS.png)
 
 ```
 THIS IS A SCRIPT FOR AUTO INSTALLATION OF SLOWDNS (DNSTT SERVER) WITH:
@@ -23,17 +23,15 @@ THIS IS A SCRIPT FOR AUTO INSTALLATION OF SLOWDNS (DNSTT SERVER) WITH:
 
 # Installation
 ```
-rm -rf install; apt update; wget https://github.com/khaledagn/SlowDNS/raw/main/install; chmod 777 install; ./install --start
+rm -rf install; apt update; wget https://github.com/AVEGAH/SlowDNS/raw/main/install; chmod 777 install; ./install --start
 
 ```
 
 
 ## :octocat: by KHALED AGN
 <ul>
- <li>TELEGRAM CHANNEL: https://t.me/khaledagn</li>
- <li>FACEBOOK: https://www.facebook.com/itskhaledagn</li>
- <li>INSTAGRAM: https://www.instagram.com/khaledagn</li>
- <li>TWITTER: https://www.twitter.com/khaled_agn</li>
+ <li>TELEGRAM CHANNEL: https://t.me/maptech_vpn_hub</li>
+ <li>WEBSITE: https://maptechvpn.com</li>
  
  </ul>
  
