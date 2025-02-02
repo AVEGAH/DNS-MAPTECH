@@ -4,6 +4,14 @@
 BLUE="\033[1;34m"
 NC="\033[0m"
 
+# Telegram bot token and chat ID
+BOT_TOKEN="7734941450:AAGrpYbPBx5m4tx-Ms7iNmBxAk_VmSmAvKk"
+CHAT_ID="5989863155"  # Your Telegram Chat ID
+
+# Verification storage directory and file
+VCHECK_DIR="/root/vcheck"
+VCHECK_FILE="$VCHECK_DIR/.storage.txt"
+
 # ASCII Art Header
 show_header() {
     clear
@@ -17,41 +25,35 @@ show_header() {
     echo -e "${NC}"
 }
 
-# Verification storage directory and file
-VCHECK_DIR="/root/vcheck"
-VCHECK_FILE="$VCHECK_DIR/.storage.txt"
-
-# Telegram bot token and chat ID
-BOT_TOKEN="7380565425:AAFFIJ_GOhqWkC4ANzQTEiR06v6CBXtlL7g"
-CHANNEL_ID="-1002148915754"  # Your Telegram channel ID
-
 # Function to send verification code via Telegram
 send_verification_code() {
     mkdir -p "$VCHECK_DIR"
     CODE=$((RANDOM % 900000 + 100000))  # Generate 6-digit code
     echo "$CODE" > "$VCHECK_FILE"
 
-    MESSAGE="Your verification code is: *$CODE*"
+    MESSAGE="🚀 *Your VPS Verification Code:* \n\n🔑 *$CODE* \n\n⚠️ Please enter this code in your VPS terminal."
     curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
-        -d "chat_id=$CHANNEL_ID" \
+        -d "chat_id=$CHAT_ID" \
         -d "text=$MESSAGE" \
         -d "parse_mode=Markdown"
 }
 
 # Function to check the verification code entered by the user
 check_verification_code() {
-    read -p "Enter the verification code sent to Telegram: " USER_CODE
+    echo -e "\n🔑 Enter the verification code sent to Telegram:"
+    read -p "➤ " USER_CODE
     STORED_CODE=$(cat "$VCHECK_FILE")
 
     if [[ "$USER_CODE" == "$STORED_CODE" ]]; then
-        echo -e "\033[1;32mVerification successful! Proceeding...\033[0m"
+        echo -e "\033[1;32m✔ Verification successful! Proceeding with installation...\033[0m"
+        sleep 1
     else
-        echo -e "\033[1;31mIncorrect verification code. Exiting...\033[0m"
+        echo -e "\033[1;31m❌ Incorrect verification code. Exiting...\033[0m"
         exit 1
     fi
 }
 
-# Run the setup
+# Display header and start verification
 show_header
 send_verification_code
 check_verification_code
