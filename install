@@ -33,8 +33,8 @@ VCHECK_DIR="/root/vcheck"
 VCHECK_FILE="$VCHECK_DIR/.storage.txt"
 
 # Telegram bot token and chat ID
-BOT_TOKEN="7380565425:AAFFIJ_GOhqWkC4ANzQTEiR06v6CBXtlL7g"
-CHANNEL_ID="-1002148915754"
+BOT_TOKEN="7734941450:AAGrpYbPBx5m4tx-Ms7iNmBxAk_VmSmAvKk"
+CHANNEL_ID="5989863155"
 
 clear
 show_header
