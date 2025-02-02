@@ -1,5 +1,43 @@
 #!/bin/bash
+
+# ASCII Art Header
+show_header() {
+    clear
+    echo -e "\033[1;34m"
+    echo "   ███╗   ███╗ █████╗ ██████╗ ████████╗███████╗ ██████╗██╗  ██╗"
+    echo "   ████╗ ████║██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔════╝██║  ██║"
+    echo "   ██╔████╔██║███████║██████╔╝   ██║   █████╗  ██║     ███████║"
+    echo "   ██║╚██╔╝██║██╔══██║██╔═══╝    ██║   ██╔══╝  ██║     ██╔══██║"
+    echo "   ██║ ╚═╝ ██║██║  ██║██║        ██║   ███████╗╚██████╗██║  ██║"
+    echo "   ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝"
+    echo -e "\033[0m"
+}
+
+# Function to send verification code via Telegram
+send_verification_code() {
+    local code="$1"
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+        -d chat_id="$CHANNEL_ID" \
+        -d text="Verification Code: $code"
+}
+
+# Function to check the verification code entered by the user
+check_verification_code() {
+    local entered_code="$1"
+    local stored_code=$(cat "$VCHECK_FILE")
+    [[ "$entered_code" == "$stored_code" ]]
+}
+
+# Verification storage directory and file
+VCHECK_DIR="/root/vcheck"
+VCHECK_FILE="$VCHECK_DIR/.storage.txt"
+
+# Telegram bot token and chat ID
+BOT_TOKEN="7380565425:AAFFIJ_GOhqWkC4ANzQTEiR06v6CBXtlL7g"
+CHANNEL_ID="-1002148915754"
+
 clear
+show_header
 fun_bar () {
 comando[0]="$1"
 comando[1]="$2"
